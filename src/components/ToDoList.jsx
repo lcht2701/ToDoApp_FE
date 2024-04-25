@@ -3,12 +3,13 @@ import axios from "axios";
 import ToDoItem from "./ToDoItem";
 import AddBox from "./AddBox";
 import noteIcon from "../assets/note.png";
+import { baseURL } from "../apis/link";
 
 const ToDoList = () => {
   const [todoList, setTodoList] = useState([]);
   const fetchToDoList = useCallback(async () => {
     try {
-      const result = await axios.get(`https://localhost:7174/api/ToDoItem`);
+      const result = await axios.get(`${baseURL}/ToDoItem`);
       setTodoList(result.data.data);
       console.log(result.data);
     } catch (error) {

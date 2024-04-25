@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { baseURL } from "../apis/link";
 import { FaTimes, FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import axios from "axios";
 
@@ -8,7 +9,7 @@ const ToDoItem = ({ item, onDeleteItem }) => {
   const handleCheck = useCallback(async () => {
     try {
       const result = await axios.patch(
-        `https://localhost:7174/api/ToDoItem/${item.id}/is-done`
+        `${baseURL}/ToDoItem/${item.id}/is-done`
       );
       setCheckBox(result.data.data.isDone);
       console.log(result.data);
@@ -20,9 +21,7 @@ const ToDoItem = ({ item, onDeleteItem }) => {
 
   const handleDelete = useCallback(async () => {
     try {
-      const result = await axios.delete(
-        `https://localhost:7174/api/ToDoItem/${item.id}`
-      );
+      const result = await axios.delete(`${baseURL}/ToDoItem/${item.id}`);
       if (result.status === 200) {
         onDeleteItem(item.id);
         console.log(result.data);

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { baseURL } from "../apis/link";
 import axios from "axios";
 
 const AddBox = ({ onAddItem }) => {
@@ -19,10 +20,7 @@ const AddBox = ({ onAddItem }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.post(
-        `https://localhost:7174/api/ToDoItem`,
-        formData
-      );
+      const result = await axios.post(`${baseURL}/ToDoItem`, formData);
       onAddItem();
       console.log(result.data);
       setFormData(initialFormData);
