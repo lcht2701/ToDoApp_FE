@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Optionally, you can ensure it affects all elements explicitly */
+body,
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
